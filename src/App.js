@@ -16,7 +16,7 @@ const App = () => {
                 descr="This is Description!"
             />
             <Layout
-                colorBg={'red'}
+                colorBg='red'
                 title="This is title"
                 descr="This is Description!"
             />
