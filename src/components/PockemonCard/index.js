@@ -2,7 +2,7 @@ import { useState } from 'react'
 import s from'./style.module.css'
 import cardBackSide from './assets/card-back-side.jpg'
 
-const PockemonCard = ({name, img, id, type, values}) => {
+const Index = ({name, img, id, type, values}) => {
     const [isActive, setActive] = useState(false)
 
     const handler = () => {
@@ -45,4 +45,4 @@ const PockemonCard = ({name, img, id, type, values}) => {
     );
 }
 
-export default PockemonCard
+export default Index
