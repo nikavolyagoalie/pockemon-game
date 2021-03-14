@@ -1,6 +1,6 @@
 import s from'./style.module.css'
 
-const Header = ({title, descr}) => {
+const Index = ({title, descr}) => {
     return (
         <>
             <header className={s.root}>
@@ -14,4 +14,4 @@ const Header = ({title, descr}) => {
     );
 }
 
-export default Header
+export default Index

@@ -1,6 +1,6 @@
 import s from'./style.module.css'
 
-const Footer = () => {
+const Index = () => {
     return (
         <footer>
             <div className="wrapper">
@@ -11,4 +11,4 @@ const Footer = () => {
     );
 }
 
-export default Footer
+export default Index
