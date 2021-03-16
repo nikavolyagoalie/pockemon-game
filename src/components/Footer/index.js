@@ -1,9 +1,10 @@
-import s from'./style.module.css'
+import s from'./style.module.css';
+import cn from 'classnames';
 
-const Index = () => {
+const Footer = () => {
     return (
         <footer>
-            <div className="wrapper">
+            <div className={cn(s.wrapper)}>
                 <h3>THANKS FOR VISITING</h3>
                 <p>© 2021 #ReactMarathon.</p>
             </div>
@@ -11,4 +12,4 @@ const Index = () => {
     );
 }
 
-export default Index
+export default Footer
