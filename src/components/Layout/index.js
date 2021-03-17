@@ -1,20 +1,21 @@
 import s from'./style.module.css';
+import cn from 'classnames';
 
-const Index = ({title, urlBg, colorBg, children}) => {
+const Layout = ({title, urlBg, colorBg, children}) => {
 
     const styleRoot = {}
     if (urlBg) {styleRoot.backgroundImage = `url(${urlBg})`}
     if (colorBg) {styleRoot.backgroundColor = colorBg}
 
     return (
-        <section className={s.root}>
-            <div className={s.wrapper} style={styleRoot}>
+        <section className={cn(s.root)}>
+            <div className={cn(s.wrapper)} style={styleRoot}>
                 <article>
-                    <div className={s.title}>
+                    <div className={cn(s.title)}>
                         <h3>{title}</h3>
-                        <span className={s.separator}></span>
+                        <span className={cn(s.separator)}></span>
                     </div>
-                    <div className={`${s.descr} ${s.full}`}>
+                    <div className={cn(s.descr, s.full)}>
                         {children}
                     </div>
                 </article>
@@ -23,4 +24,4 @@ const Index = ({title, urlBg, colorBg, children}) => {
     );
 }
 
-export default Index
+export default Layout
