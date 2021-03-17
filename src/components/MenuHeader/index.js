@@ -17,6 +17,7 @@ const MenuHeader = () => {
             />
             <NavBar
                 onClickBurger={handleClickBurger}
+                stateMenu={state}
             />
         </>
     )

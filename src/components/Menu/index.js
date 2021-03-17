@@ -1,6 +1,29 @@
 import s from'./style.module.css';
 import cn from 'classnames';
 
+const MENU_ITEMS = [
+    {
+        "href": "#welcome",
+        "menu_item": "HOME"
+    },
+
+    {
+        "href": "#game",
+        "menu_item": "GAME"
+    },
+
+    {
+        "href": "#about",
+        "menu_item": "ABOUT"
+    },
+
+    {
+        "href": "#contact",
+        "menu_item": "CONTACT"
+    }
+
+];
+
 const Menu = ({stateMenu}) => {
     const activeOrDeactive = stateMenu ? s.active : s.deactive;
     return (
@@ -9,26 +32,15 @@ const Menu = ({stateMenu}) => {
                 <div class={cn(s.overlay)} />
                 <div class={cn(s.menuItems)} >
                     <ul>
-                        <li>
-                            <a href="#welcome">
-                                HOME
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#game">
-                                GAME
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about">
-                                ABOUT
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact">
-                                CONTACT
-                            </a>
-                        </li>
+                        {
+                            MENU_ITEMS
+                                .map((item) =>
+                                    <li>
+                                        <a href={item.href}>
+                                            {item.menu_item}
+                                        </a>
+                                    </li>)
+                        }
                     </ul>
                 </div>
             </div>

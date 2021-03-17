@@ -2,9 +2,9 @@ import s from'./style.module.css';
 import cn from 'classnames';
 import {useState} from "react";
 
-const NavBar = ({onClickBurger}) => {
+const NavBar = ({onClickBurger, stateMenu}) => {
 
-    const [isActive, setActive] = useState(false)
+    const [isActive, setActive] = useState(stateMenu)
 
     const handler = () => {
         onClickBurger && onClickBurger(!isActive);
