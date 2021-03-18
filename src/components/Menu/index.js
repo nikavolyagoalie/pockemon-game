@@ -1,44 +1,48 @@
-import s from'./style.module.css';
 import cn from 'classnames';
+
+import {Link} from 'react-router-dom';
+
+import s from'./style.module.css';
+
 
 const MENU_ITEMS = [
     {
-        "href": "#welcome",
-        "menu_item": "HOME"
+        to: "/",
+        title: "HOME"
     },
 
     {
-        "href": "#game",
-        "menu_item": "GAME"
+        to: "/game",
+        title: "GAME"
     },
 
     {
-        "href": "#about",
-        "menu_item": "ABOUT"
+        to: "/about",
+        title: "ABOUT"
     },
 
     {
-        "href": "#contact",
-        "menu_item": "CONTACT"
+        to: "/contact",
+        title: "CONTACT"
     }
 
 ];
 
 const Menu = ({stateMenu}) => {
-    const activeOrDeactive = stateMenu ? s.active : s.deactive;
+
     return (
         <>
-            <div class={cn(s.menuContainer, activeOrDeactive )}>
-                <div class={cn(s.overlay)} />
-                <div class={cn(s.menuItems)} >
+            <div className={cn(s.menuContainer, {[s.active]: stateMenu === true, [s.deactive]: stateMenu === false} )}>
+                <div classNamr={cn(s.overlay)} />
+                <div>
                     <ul>
                         {
                             MENU_ITEMS
-                                .map((item) =>
-                                    <li>
-                                        <a href={item.href}>
-                                            {item.menu_item}
-                                        </a>
+                                .map(({to, title}, index) =>
+                                    <li key={index}>
+                                        <Link to={to}>
+                                            {title}
+                                        </Link>
                                     </li>)
                         }
                     </ul>

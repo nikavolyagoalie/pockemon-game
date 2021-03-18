@@ -1,13 +1,13 @@
-import s from'./style.module.css';
+import {useState} from "react";
 import Menu from "../Menu";
 import NavBar from "../NavBar";
-import {useState} from "react";
 
-const MenuHeader = () => {
-    const [state, menuState] = useState(false)
+
+const MenuHeader = ({bgActive}) => {
+    const [state, menuState] = useState(null)
 
     const handleClickBurger = () => {
-        menuState(!state);
+        menuState(prevState => !prevState);
     }
 
     return(
@@ -18,6 +18,7 @@ const MenuHeader = () => {
             <NavBar
                 onClickBurger={handleClickBurger}
                 stateMenu={state}
+                bgActive={bgActive}
             />
         </>
     )
