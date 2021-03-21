@@ -3,11 +3,12 @@ import s from'./style.module.css'
 import cardBackSide from './assets/card-back-side.jpg'
 import cn from 'classnames';
 
-const PockemonCard = ({name, img, id, type, values, clickCard, isActive}) => {
+const PockemonCard = ({name, img, id, type, values, isActive, clickCard}) => {
 
     const handler = () => {
-        clickCard && clickCard(id);
+        clickCard && clickCard();
     }
+
     return (
         <div className={cn(s.root)} onClick={handler}>
             <div className={cn(s.pokemonCard, {[s.active]: isActive})}>
