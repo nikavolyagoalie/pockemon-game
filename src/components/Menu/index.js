@@ -33,7 +33,7 @@ const Menu = ({stateMenu}) => {
     return (
         <>
             <div className={cn(s.menuContainer, {[s.active]: stateMenu === true, [s.deactive]: stateMenu === false} )}>
-                <div classNamr={cn(s.overlay)} />
+                <div className={cn(s.overlay)} />
                 <div>
                     <ul>
                         {

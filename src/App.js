@@ -13,7 +13,6 @@ import AboutPage from "./routes/About";
 import ContactPage from "./routes/Contact";
 import NotFound from "./routes/NotFound";
 
-
 const App = () => {
 
     const match = useRouteMatch('/');
