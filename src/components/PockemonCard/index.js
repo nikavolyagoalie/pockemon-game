@@ -6,7 +6,7 @@ import cn from 'classnames';
 const PockemonCard = ({name, img, id, type, values, isActive, clickCard}) => {
 
     const handler = () => {
-        clickCard && clickCard();
+        clickCard && clickCard(id);
     }
 
     return (
@@ -14,7 +14,7 @@ const PockemonCard = ({name, img, id, type, values, isActive, clickCard}) => {
             <div className={cn(s.pokemonCard, {[s.active]: isActive})}>
                 <div className={cn(s.cardFront)}>
                     <div className={cn(s.wrap, s.front)}>
-                        <div className={cn(s.pokemon, s[type])}>
+                        <div className={cn(s.pokemon, s.type)}>
                             <div className={cn(s.values)}>
                                 <div className={cn(s.count, s.top)}>{values.top}</div>
                                 <div className={cn(s.count, s.right)}>{values.right}</div>

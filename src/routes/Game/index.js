@@ -150,15 +150,11 @@ const GamePage = () => {
         }
     ];
 
-    const [newPockemons, setPockemons] = useState(JSON.parse(JSON.stringify(POCKEMONS)));
 
-    const clickCard = (e) => {
-        const result = newPockemons.map(item => {
-            if (item.id === e) item["active"] = true;
-            return item
-        });
-        setPockemons(result);
+    const [pockemons, setPokemons] = useState(JSON.parse(JSON.stringify(POCKEMONS)));
 
+    const clickCard = (id) => {
+        setPokemons(prevState => prevState.map(item => item.id === id ? {...item, active: !item.active} : item))
     }
 
     return (
@@ -169,13 +165,15 @@ const GamePage = () => {
             >
                 <div className="flex">
                     {
-                        newPockemons.map((item) => <PockemonCard key={item.id}
-                                                                 name={item.name}
-                                                                 img={item.img}
-                                                                 type={item.type}
-                                                                 values={item.values}
-                                                                 id={item.id}
+                        pockemons.map((id, name, type, img, values, active) => <PockemonCard key={id}
+                                                                 name={name}
+                                                                 img={img}
+                                                                 type={type}
+                                                                 values={values}
+                                                                 id={id}
                                                                  clickCard={clickCard}
+                                                              isActive={active}
+
 
                         />)
                     }
