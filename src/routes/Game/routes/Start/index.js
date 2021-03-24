@@ -1,4 +1,5 @@
 import PockemonCard from "../../../../components/PockemonCard";
+import {useHistory} from 'react-router-dom';
 import Layout from "../../components/Layout";
 import {useHistory} from 'react-router-dom';
 
@@ -7,12 +8,14 @@ import database from "../../services/firebase";
 import '../../App.css';
 import {useState, useEffect, useContext} from "react";
 import {FireBaseContext} from "../../../../context/firebaseContext";
+import {PokemonContext} from "../../../../context/pokemonContext";
 
-
-const GamePage = () => {
+const StartPage = () => {
 
     const firebse = useContext(FireBaseContext);
+    const pokemonContext = useContext(PokemonContext);
     const [pockemons, setPokemons] = useState({});
+    const history = useHistory();
 
     // const getPockemons = async () => {
     //     // database.ref('pokemons').once("value", (snapshot) => {
@@ -31,8 +34,22 @@ const GamePage = () => {
     }, []);
 
 
-    const clickCard = (id) => {
+    const clickCard = (key) => {
+        const pokemon = {...pokemons[key]};
+        pokemonContext.onSelectedPokemons(key, pokemon){
+        }
 
+        setPokemons(prevState => ({
+            ...prevState,
+            [key]: {
+                ...prevState[key],
+                selected: !prevState[key].selected
+            }
+        }))
+    }
+
+    const handleStartGameClick = () => {
+        history.push('/game/board');
     }
 
     return (
@@ -43,21 +60,28 @@ const GamePage = () => {
             >
                 <div className="flex">
                     {
-                        Object.entries(pockemons).map(([key, {id, name, type, img, values, active}]) => <PockemonCard
+                        Object.entries(pockemons).map(([key, {id, name, type, img, values, selected}]) => <PockemonCard
+                            className={s.card}
                             name={name}
                             img={img}
                             key={key}
                             type={type}
                             values={values}
                             id={id}
-                            clickCard={() => clickCard(id, key)}
+                            isSelected={selected}
                             isActive={true}
+                            clickCard={() => {
+                                if (Object.keys(pokemonContext.pokemons).length < 5 || selected) {
+                                    clickCard(key)
+                                }
+                            }}
                         />)
                     }
                 </div>
             </Layout>
             <button
-
+                onClick={handleStartGameClick}
+                disabled={Object.keys(pokemonsContext.pokemons).length < 5}
             >
                 Start Game
             </button>
@@ -65,4 +89,4 @@ const GamePage = () => {
     )
 }
 
-export  default GamePage;
+export  default StartPage;
